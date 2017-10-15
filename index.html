@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CurrencyCalculator">
+  <head>
+    <title>currency calculator</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src='main.js' type='text/javascript'></script>
+  </head>
+  <body ng-controller="MainController">
+
+    <input type="number" min="1" value="1" ng-model="amount" placeholder="enter amount" ng-change="convert()"></input>
+    <select name="repeatSelect" id="repeatSelect" ng-model="sourceCurrency" ng-change="getHistory();convert()">
+        <option value="" disabled selected>select source currency</option>
+        <option ng-repeat="currency in base" value="{{currency}}">{{currency}}</option>
+    </select>
+    &nbsp;=&nbsp;{{result}}
+    <select name="repeatSelect" id="repeatSelect" ng-model="targetCurrency" ng-change="getHistory();convert()">
+        <option value="" disabled selected>select target currency</option>
+        <option ng-repeat="currency in base" value="{{currency}}">{{currency}}</option>
+    </select>
+
+    <div id="chart"></div>
+    
+  </body>
+</html>
